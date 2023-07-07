@@ -45,5 +45,7 @@ Route::get('/contact', function () {
 
 Route::get('/register',[recordController::class , 'register']);
 Route::post('/register',[recordController::class , 'create']);
+
+
 Route::get('/uniqueReq',singleActionController::class);
 Route::resource('/customer',crudController::class);
