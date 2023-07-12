@@ -11,17 +11,17 @@ class recordController extends Controller
     function create(Request $request)
     {
 
-        // $request->validate([
+        $request->validate([
 
-        //     'fname' => 'required',
-        //     'lname' => 'required',
-        //     'gender' => 'required',
-        //     'dob' => 'required'
-
-
+            'fname' => 'required',
+            'lname' => 'required',
+            'gender' => 'required',
+            'dob' => 'required'
 
 
-        // ]);
+
+
+        ]);
 
         $student = new Students();
         // echo "<pre>";
@@ -32,9 +32,9 @@ class recordController extends Controller
         $student->firstName = $request['fname'];
         $student->lastName = $request['lname'];
         $student->gender = $request['gender'];
-        $student->contact = $request['contact']; 
-        $student->email = $request['email']; 
-        $student->dob = $request['dob']; 
+        $student->contact = $request['contact'];
+        $student->email = $request['email'];
+        $student->dob = $request['dob'];
         $student->save();
 
         return redirect('/welcome');
@@ -58,7 +58,14 @@ class recordController extends Controller
 
     function show()
     {
+        $fetchAll = Students::all();
+$students = $fetchAll->toArray();
+        //  echo "<pre>";
+        //  print_r($students->toArray());
 
-        echo "show";
+        return view('index' , compact('students'));
+
+
+        // echo "show";
     }
 }

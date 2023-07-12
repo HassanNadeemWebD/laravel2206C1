@@ -44,6 +44,7 @@ Route::get('/contact', function () {
 
 
 Route::get('/register',[recordController::class , 'register']);
+Route::get('/show',[recordController::class , 'show']);
 Route::post('/register',[recordController::class , 'create']);
 
 

@@ -46,7 +46,7 @@
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
                             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                            <form action="/register" method="POST">
+                            <form action="{{ url('/') }}/register" method="POST">
                                 {{-- Cross Site Request Forgery --}}
                                 @csrf
 
@@ -55,11 +55,11 @@
 
                                         <div class="form-outline">
                                             <input type="text" name="fname" id="firstName"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" value="{{ old('fname') }}" />
                                             <label class="form-label" for="firstName">First Name</label>
                                         </div>
                                         @error('fname')
-                                            <span class="text-danger"> {{$message}} </span>
+                                            <span class="text-danger"> {{ $message }} </span>
                                         @enderror
 
                                     </div>
@@ -67,12 +67,12 @@
 
                                         <div class="form-outline">
                                             <input type="text" name="lname" id="lastName"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg"  value="{{ old('lname') }}" />
                                             <label class="form-label" for="lastName">Last Name</label>
                                         </div>
                                         @error('lname')
-                                        <span class="text-danger"> {{$message}} </span>
-                                    @enderror
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -81,12 +81,12 @@
 
                                         <div class="form-outline datepicker w-100">
                                             <input type="text" name="dob" class="form-control form-control-lg"
-                                                id="birthdayDate" />
+                                                id="birthdayDate"  value="{{ old('dob') }}" />
                                             <label for="birthdayDate" class="form-label">Birthday</label>
                                         </div>
                                         @error('dob')
-                                        <span class="text-danger"> {{$message}} </span>
-                                    @enderror
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
 
                                     </div>
                                     <div class="col-md-6 mb-4">
@@ -95,7 +95,7 @@
 
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender"
-                                                id="femaleGender" value="female"  />
+                                                id="femaleGender" value="female" />
                                             <label class="form-check-label" for="femaleGender">Female</label>
                                         </div>
 
@@ -104,12 +104,12 @@
                                                 id="maleGender" value="male" checked />
                                             <label class="form-check-label" for="maleGender">Male</label>
                                             @error('gender')
-                                            <span class="text-danger"> {{$message}} </span>
-                                        @enderror
+                                                <span class="text-danger"> {{ $message }} </span>
+                                            @enderror
                                         </div>
 
-                               
-                                      
+
+
 
                                     </div>
                                 </div>

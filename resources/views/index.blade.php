@@ -5,44 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{$pageTitle}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Document</title>
 </head>
 
-<body>
-    @php
-        // $name = '<h1> Ali Ahmed </h1>';
-        $age = '';
-        
-        $arr = [1, 2, 3, 4, 5, 6, 76, 11, 22, 44, 33, 11];
-    @endphp
+<body class="container">
+    {{-- <pre>
+@php
+    print_r($students[0]['email']);
+@endphp
+</pre> --}}
+    <h1>Students</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Update/Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($students as $data)
+                <tr>
+                    <td>{{ $data['studentID'] }}</td>
+                    <td>{{ $data['firstName'] }}</td>
+                    <td>{{ $data['lastName'] }}</td>
+                    <td>{{ $data['dob'] }}</td>
+                    <td>{{ $data['gender'] }}</td>
+                    <td>{{ $data['email'] }}</td>
+                    <td>{{ $data['contact'] }}</td>
+                    <td>
+                        <a href="/edit?id={{ $data['studentID'] }}"><button class="btn btn-primary">Update</button></a>
+                        <a href="/delete?id={{ $data['studentID'] }}"><button class="btn btn-danger">delete</button></a>
 
 
-    <h1>{{$pageTitle}}</h1>
-    {{ $name }}
+                    </td>
+                </tr>
+            @endforeach
 
-
-    {!! $name !!}
-
-    {{-- @for ($i = 0; $i <= 100; $i++)
-        <h3>{{ $i }}</h3>
-    @endfor
-
-
-    @foreach ($arr as $item)
-        {{ $item }}
-    @endforeach --}}
-
-    @if ($age !== '')
-
-
-        @if ($age >= 18)
-            <h2>Eligible Age 18</h2>
-        @elseif($age < 18)
-            <h2>Ineligible Age less than 18</h2>
-        @endif
-    @else
-        <h2>Invalid Age</h2>
-    @endif
+        </tbody>
+    </table>
 
 </body>
 
