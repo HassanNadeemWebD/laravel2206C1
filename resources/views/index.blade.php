@@ -43,8 +43,8 @@
                     <td>{{ $data['email'] }}</td>
                     <td>{{ $data['contact'] }}</td>
                     <td>
-                        <a href="/edit?id={{ $data['studentID'] }}"><button class="btn btn-primary">Update</button></a>
-                        <a href="/delete?id={{ $data['studentID'] }}"><button class="btn btn-danger">delete</button></a>
+                        <a href="/edit/{{ $data['studentID'] }}"><button class="btn btn-primary">Update</button></a>
+                        <a href="/delete/{{ $data['studentID'] }}"><button class="btn btn-danger">delete</button></a>
 
 
                     </td>

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Form</title>
+    <title>{{ $pageTitle }}</title>
 </head>
 <style>
     .gradient-custom {
@@ -45,8 +45,8 @@
                 <div class="col-12 col-lg-9 col-xl-7">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                            <form action="{{ url('/') }}/register" method="POST">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">{{ $pageTitle }}</h3>
+                            <form action="{{ url('/') }}{{$route}}/{{$id}}" method="POST">
                                 {{-- Cross Site Request Forgery --}}
                                 @csrf
 
@@ -55,7 +55,11 @@
 
                                         <div class="form-outline">
                                             <input type="text" name="fname" id="firstName"
-                                                class="form-control form-control-lg" value="{{ old('fname') }}" />
+                                                class="form-control form-control-lg"
+                                                @if ($pageTitle == 'Update Info') value="{{ $student['firstName'] }}"
+                                                
+                                                @else
+                                                value="{{ old('fname') }}" @endif />
                                             <label class="form-label" for="firstName">First Name</label>
                                         </div>
                                         @error('fname')
@@ -67,7 +71,11 @@
 
                                         <div class="form-outline">
                                             <input type="text" name="lname" id="lastName"
-                                                class="form-control form-control-lg"  value="{{ old('lname') }}" />
+                                                class="form-control form-control-lg"    @if ($pageTitle == 'Update Info')
+                                                 value="{{ $student['lastName'] }}"
+                                                
+                                                @else
+                                                value="{{ old('lname') }}" @endif />
                                             <label class="form-label" for="lastName">Last Name</label>
                                         </div>
                                         @error('lname')
@@ -81,7 +89,10 @@
 
                                         <div class="form-outline datepicker w-100">
                                             <input type="text" name="dob" class="form-control form-control-lg"
-                                                id="birthdayDate"  value="{{ old('dob') }}" />
+                                                id="birthdayDate"    @if ($pageTitle == 'Update Info') value="{{ $student['dob'] }}"
+                                                
+                                                @else
+                                                value="{{ old('dob') }}" @endif/>
                                             <label for="birthdayDate" class="form-label">Birthday</label>
                                         </div>
                                         @error('dob')
@@ -95,13 +106,23 @@
 
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender"
-                                                id="femaleGender" value="female" />
+                                                id="femaleGender" value="female"   @if ($pageTitle == 'Update Info') 
+                                                @if($student['gender'] == 'female' )
+
+                                                {{'checked'}}
+                                                @endif
+                                               @endif  />
                                             <label class="form-check-label" for="femaleGender">Female</label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="gender"
-                                                id="maleGender" value="male" checked />
+                                                id="maleGender" value="male"    @if ($pageTitle == 'Update Info') 
+                                                @if($student['gender'] == 'male' )
+
+                                                {{'checked'}}
+                                                @endif
+                                               @endif />
                                             <label class="form-check-label" for="maleGender">Male</label>
                                             @error('gender')
                                                 <span class="text-danger"> {{ $message }} </span>
@@ -119,7 +140,11 @@
 
                                         <div class="form-outline">
                                             <input type="email" name="email" id="emailAddress"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg"    @if ($pageTitle == 'Update Info')
+                                                 value="{{ $student['email'] }}"
+                                                
+                                                @else
+                                                value="{{ old('fname') }}" @endif />
                                             <label class="form-label" for="emailAddress">Email</label>
                                         </div>
 
@@ -128,7 +153,10 @@
 
                                         <div class="form-outline">
                                             <input type="tel" name="contact" id="phoneNumber"
-                                                class="form-control  form-control-lg" />
+                                                class="form-control  form-control-lg"    @if ($pageTitle == 'Update Info') value="{{ $student['contact'] }}"
+                                                
+                                                @else
+                                                value="{{ old('fname') }}" @endif />
                                             <label class="form-label" for="phoneNumber">Phone Number</label>
                                         </div>
 

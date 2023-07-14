@@ -44,8 +44,11 @@ Route::get('/contact', function () {
 
 
 Route::get('/register',[recordController::class , 'register']);
-Route::get('/show',[recordController::class , 'show']);
+Route::get('/',[recordController::class , 'show']);
 Route::post('/register',[recordController::class , 'create']);
+Route::get('/edit/{id}',[recordController::class , 'edit']);
+Route::post('/update/{id}',[recordController::class , 'update']);
+
 
 
 Route::get('/uniqueReq',singleActionController::class);
