@@ -47,8 +47,8 @@ class recordController extends Controller
     {
         $pageTitle = "Registration";
 
-
-        return view('form', compact('pageTitle'));
+$route = '/register';
+        return view('form', compact('pageTitle' , 'route'));
     }
 
     function edit($id)
@@ -57,7 +57,7 @@ class recordController extends Controller
         $find = Students::find($id);
         $pageTitle = "Update Info";
         $student =  $find->toArray();
-        $route = "/update";        // print_r($student);
+        $route = "/update/$id";        // print_r($student);
         return view('form', compact('pageTitle', 'student', 'route', 'id'));
     }
 
@@ -79,8 +79,12 @@ class recordController extends Controller
 
     function delete($id){
 
-        
+$student = Students::find($id);
 
+$student->delete();
+
+
+return redirect('/');
 
 
 

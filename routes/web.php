@@ -47,6 +47,7 @@ Route::get('/register',[recordController::class , 'register']);
 Route::get('/',[recordController::class , 'show']);
 Route::post('/register',[recordController::class , 'create']);
 Route::get('/edit/{id}',[recordController::class , 'edit']);
+Route::get('/delete/{id}',[recordController::class , 'delete']);
 Route::post('/update/{id}',[recordController::class , 'update']);
 
 
